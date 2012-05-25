@@ -16,3 +16,11 @@
 
 # Ignore the database.yml for security reasons
 /config/database.yml
+
+# Ignore other unneeded files.
+doc/
+*.swp
+*~
+.project
+.DS_Store
+bundler_stubs/
