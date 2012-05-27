@@ -1,6 +1,5 @@
 class PassagesController < ApplicationController
-  # GET /passages
-  # GET /passages.json
+
   def index
     @passages = Passage.all
 
@@ -10,8 +9,6 @@ class PassagesController < ApplicationController
     end
   end
 
-  # GET /passages/1
-  # GET /passages/1.json
   def show
     @passage = Passage.find(params[:id])
 
@@ -21,8 +18,6 @@ class PassagesController < ApplicationController
     end
   end
 
-  # GET /passages/new
-  # GET /passages/new.json
   def new
     @passage = Passage.new
 
@@ -32,13 +27,10 @@ class PassagesController < ApplicationController
     end
   end
 
-  # GET /passages/1/edit
   def edit
     @passage = Passage.find(params[:id])
   end
 
-  # POST /passages
-  # POST /passages.json
   def create
     @passage = Passage.new(params[:passage])
 
@@ -53,8 +45,6 @@ class PassagesController < ApplicationController
     end
   end
 
-  # PUT /passages/1
-  # PUT /passages/1.json
   def update
     @passage = Passage.find(params[:id])
 
@@ -69,8 +59,6 @@ class PassagesController < ApplicationController
     end
   end
 
-  # DELETE /passages/1
-  # DELETE /passages/1.json
   def destroy
     @passage = Passage.find(params[:id])
     @passage.destroy
