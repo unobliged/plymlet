@@ -23,7 +23,7 @@
 <p>
   <b>Vocabulary:</b>
   <ul><% unique_words(@passage.content).each do |x| %>
-        <%= x %>
+        <%= content_tag(:li, x) %>
       <% end %>
   </ul>
 </p>
