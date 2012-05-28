@@ -11,6 +11,7 @@ gem 'bootstrap-will_paginate', '0.0.6'
 gem 'will_paginate', '3.0.3'
 
 gem 'jquery-rails', '2.0.0'
+gem 'rwordnet'
 
 group :development, :test do
   gem 'rspec-rails', '2.10.0'

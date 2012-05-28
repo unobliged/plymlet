@@ -23,7 +23,12 @@
 <p>
   <b>Vocabulary:</b>
   <ul><% unique_words(@passage.content).each do |x| %>
-        <%= content_tag(:li, x) %>
+        <% begin %>
+          <%= content_tag(:li, x) %>
+          <%= define_word(x) %>
+        <% rescue Errno::ENOENT %>
+          <%= "error:ENOENT" %>
+        <% end %>
       <% end %>
   </ul>
 </p>
