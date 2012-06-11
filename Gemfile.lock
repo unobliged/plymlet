@@ -122,7 +122,6 @@ GEM
       railties (>= 3.0)
       rspec (~> 2.10.0)
     rubyzip (0.9.8)
-    rwordnet (0.1.3)
     sass (3.1.18)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -150,7 +149,6 @@ GEM
     will_paginate (3.0.3)
     xpath (0.1.4)
       nokogiri (~> 1.3)
-    zidian (0.3.0)
 
 PLATFORMS
   ruby
@@ -169,8 +167,6 @@ DEPENDENCIES
   rails (= 3.2.3)
   redis
   rspec-rails (= 2.10.0)
-  rwordnet
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
   will_paginate (= 3.0.3)
-  zidian

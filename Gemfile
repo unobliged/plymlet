@@ -11,8 +11,8 @@ gem 'bootstrap-will_paginate', '0.0.6'
 gem 'will_paginate', '3.0.3'
 
 gem 'jquery-rails', '2.0.0'
-gem 'zidian'
-gem 'rwordnet'
+#gem 'zidian'
+#gem 'rwordnet'
 
 gem 'redis'
 
