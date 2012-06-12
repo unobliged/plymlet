@@ -16,6 +16,9 @@ gem 'jquery-rails', '2.0.0'
 
 gem 'redis'
 
+#not entirely sure how to use this gem yet...
+#gem 'redis-objects'
+
 group :development, :test do
   gem 'rspec-rails', '2.10.0'
   gem 'annotate', '~> 2.4.0'

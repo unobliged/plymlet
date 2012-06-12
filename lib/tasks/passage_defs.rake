@@ -8,7 +8,9 @@ task :passage_defs => :environment do
 
   p = Passage.find(4).content
   unique_words(p).each do |x|
-    REDIS.set(x, define_word_CEDICT(x).to_s) # only works with .to_s, why?
+    define_word_CEDICT(x).each do |y|
+      REDIS.rpush(x, y)
+    end
   end
 
 #  Use this format to iterate over all Passages for later

@@ -1,8 +1,7 @@
 module PassagesHelper
 
-# I used unique_words in the rake task, perhaps this should be stored too?
   def unique_words(content)
-    @words = content.downcase.gsub(/[[:punct:]]/,"").split(' ').uniq.sort
+    @words = content.downcase.gsub(/[[:punct:]]/,"").split(' ').uniq
   end
 
 # this method is only for looking up in CEDICT, Redis should be used later after rake
@@ -10,25 +9,25 @@ module PassagesHelper
     @cedict = 'cedict.txt'
     @word_matches = File.readlines(@cedict).grep(/#{word}/)
 
-    @match = [] # this is used to parse possible matches from CEDICT
+    # Could not use << operator without initializing @best_match, workaround?
+    @best_match = []
 
     @word_matches.each do |x|
-      @match = x.split # CEDICT lists simplified and traditional, space delimited
-      return x if @match[0]==(word) or @match[1]==(word)
+      # CEDICT lists simplified and traditional characters, space delimited
+      # 学 = "學 学 [xue2] /to learn/to study/science/-ology/"
+      @match = x.split
+
+      if @match[0] == word || @match[1] == word
+        @best_match << x
+      end
     end
+
+    return @best_match
   end
 
 # rake passage_defs for this to work
   def define_word(word)
-    REDIS.get(word)
+    REDIS.lrange(word, 0, -1)
   end
-
-
-# Old code from testing zidian and wordnet
-#    @cnword = Zidian.find(word)   
-#    lemmas = WordNet::WordNetDB.find(word)
-#    synsets = lemmas.map { |lemma| lemma.synsets }
-#    words = synsets.flatten
-#    words.each { |word| puts word.gloss }
 
 end
