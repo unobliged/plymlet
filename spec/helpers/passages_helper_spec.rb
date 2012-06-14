@@ -4,7 +4,7 @@ describe PassagesHelper do
 
   describe "#unique_words" do
     let(:passage) { FactoryGirl.create(:passage) }
-    :passage.title.should eq("testFG")
+    passage.title.should eq("testFG")
 #    @result = unique_words(:passage.content) 
 #    result.to_set == result
   end 

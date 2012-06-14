@@ -5,17 +5,4 @@ FactoryGirl.define do
     language "h"
     title "testFG"
   end
-
-
-
-
-
-
-
-
-
-
-
-
-
 end
