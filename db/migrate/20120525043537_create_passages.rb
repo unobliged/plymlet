@@ -11,5 +11,6 @@ class CreatePassages < ActiveRecord::Migration
     end
 
     add_index :passages, [:author, :language, :title], unique: true
+
   end
 end

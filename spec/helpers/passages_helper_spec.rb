@@ -1,15 +1,17 @@
 require 'spec_helper'
 
-# Specs in this file have access to a helper object that includes
-# the PassagesHelper. For example:
-#
-# describe PassagesHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       helper.concat_strings("this","that").should == "this that"
-#     end
-#   end
-# end
 describe PassagesHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe "#unique_words" do
+    let(:passage) { FactoryGirl.create(:passage) }
+    :passage.title.should eq("testFG")
+#    @result = unique_words(:passage.content) 
+#    result.to_set == result
+  end 
+
+  describe "#define_words_CEDICT" do
+
+  end
+
+
 end

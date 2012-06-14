@@ -11,17 +11,12 @@ gem 'bootstrap-will_paginate', '0.0.6'
 gem 'will_paginate', '3.0.3'
 
 gem 'jquery-rails', '2.0.0'
-#gem 'zidian'
-#gem 'rwordnet'
 
 gem 'redis'
 
-#not entirely sure how to use this gem yet...
-#gem 'redis-objects'
-
 group :development, :test do
   gem 'rspec-rails', '2.10.0'
-  gem 'annotate', '~> 2.4.0'
+  gem 'annotate', '~> 2.4.1.beta'
 end
 
 group :assets do
