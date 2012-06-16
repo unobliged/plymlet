@@ -64,4 +64,10 @@ Plymlet::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  # Sets up the Redis connection information for development
+  ENV["REDISTOGO_URL"] = 'redis://redistogo:a30a305ec24ca980498fdb5a947c3748@scat.redistogo.com:9315/'
+
+  # Configuration for Devise gem
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end
