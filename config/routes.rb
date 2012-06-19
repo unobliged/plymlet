@@ -1,8 +1,12 @@
 Plymlet::Application.routes.draw do
-  devise_for :users 
 
+  root :to => 'static_pages#home'
+
+  devise_for :users 
   resources :passages
 
-  root :to => "home#index"
+  match '/help',    to: 'static_pages#help'
+  match '/about',   to: 'static_pages#about'
+  match '/contact', to: 'static_pages#contact'
   
 end
