@@ -1,0 +1,24 @@
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: plymlet_development
+  pool: 5
+  username: plymlet
+  password: blocio
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: plymlet_test
+  pool: 5
+  username: plymlet
+  password: blocio
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: plymlet_production
+  pool: 5
+  username: plymlet
+  password: blocio
