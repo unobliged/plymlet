@@ -36,7 +36,7 @@ Plymlet::Application.configure do
   config.assets.debug = true
 
   # Sets up the Redis connection information for development
-  ENV["REDISTOGO_URL"] = 'redis://redistogo:a30a305ec24ca980498fdb5a947c3748@scat.redistogo.com:9315/'
+  ENV["REDISTOGO_URL"] = 'redis://redistogo:682da8a08a168ecdb76b42edac98b593@cod.redistogo.com:9437/'
 
   # Configuration for Devise gem
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }

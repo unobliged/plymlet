@@ -6,7 +6,7 @@ task :passage_defs => :environment do
   require "#{Rails.root}/app/helpers/passages_helper"
   include PassagesHelper
 
-  p = Passage.find(4).content
+  p = Passage.find_by_title('test cn passage').content
   unique_words(p).each do |x|
     define_word_CEDICT(x).each do |y|
       REDIS.rpush(x, y)
