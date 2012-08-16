@@ -10,7 +10,7 @@ gem 'bootstrap-sass', '2.0.0'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'will_paginate', '3.0.3'
 
-gem 'jquery-rails', '2.0.0'
+gem 'jquery-rails', '2.0.2'
 
 gem 'redis'
 

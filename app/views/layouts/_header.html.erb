@@ -2,14 +2,15 @@
 <header class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to "Plymlet", '#', id: "logo" %>
+      <%= link_to "Plymlet", root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
-          <li><%= link_to "Home",    root_path %></li>
+          <li><%= link_to "Home",    passages_path %></li>
           <li><%= link_to "About",   about_path %></li>
           <li><%= link_to "Help",    help_path %></li>
           <li><%= link_to "Contact", contact_path %></li>
           <% if user_signed_in? %>
+            <li><%= link_to "My Account", current_user %></li>
             <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
           <% else %>
             <li><%= link_to "Sign in", new_user_session_path %></li>
