@@ -1,39 +1,44 @@
-<div class="container">
+<% content_for :for_head do %>
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<% end %>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @passage.title %>
-</p>
-
-<p>
-  <b>Author:</b>
-  <%= @passage.author %>
-</p>
-
-<p>
-  <b>Language:</b>
-  <%= @passage.language %>
-</p>
-
-<p>
-  <b>Content:</b>
-  <%= @passage.content %>
-</p>
-
-<p>
-  <b>Vocabulary:</b>
-  <ul><% unique_words(@passage.content).each do |x| %>
-        <% begin %>
-          <%= content_tag(:li, x) %>
-          <%= define_word(x) %>
-        <% rescue Errno::ENOENT %>
-          <%= "error:ENOENT" %>
-        <% end %>
-      <% end %>
-  </ul>
-</p>
-
-<%= link_to 'Edit', edit_passage_path(@passage) %> |
-<%= link_to 'Back', passages_path %>
+<div id="leftcol">
+  <div class="passage">
+    <p class="passage-info"><span class="boldme">Title:</span> <%= @passage.title %></p>
+    <p class="passage-info"><span class="boldme">Author:</span> <%= @passage.author %></p>
+    <p class="passage-info"><span class="boldme">Language:</span> <%= @passage.language %></p>
+    <p><%= @passage.content %></p>
+    <p class="passage-info"><%= link_to 'Edit', edit_passage_path(@passage) %> |
+    <%= link_to 'Back', passages_path %>
+    </p>
+  </div>
 </div>
+<div id="rightcol">
+  <div class="author-notes">
+  </div>
+  <div id="tabs">  
+    <ul>
+	<li><a href="#vocab-box">Vocabulary List</a></li>
+	<li><a href="#vocab-viewer">Vocabulary Viewer</a></li>	
+    </ul>
+	<div id="vocab-box">
+    	  <ul class="vocab-list"><% unique_words(@passage.content).each do |x| %>
+            <% begin %>
+              <li class="vocab-item">
+                <p class="vocab-word"><%= x %></p>
+                <p class="vocab-def"><%= define_word(x) %></p>
+              </li>
+              <% rescue Errno::ENOENT %>
+                <%= "error:ENOENT" %>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+	<div id="vocab-viewer"><p>Hi!</p></div>
+  </div>
+</div>
+

@@ -7,6 +7,9 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
+  <% if content_for? :for_head %>
+    <%= yield :for_head %>
+  <% end %>
 </head>
 
 <body>
