@@ -15,6 +15,26 @@
 //= require jquery_ujs
 //= require_tree .
 
+
 $(document).ready(function() {
-    $("#tabs").tabs();
+
+  $("span.passage-word").click(function() {
+    var filterVal = $(this).text();
+    if(filterVal == "Vocabulary List") {
+      $("li.hidden").fadeIn(0).removeClass('hidden');
+    }
+    else {
+      $("li.vocab-item").each(function() {
+        var filterVal2 = $(this).children("p.vocab-word").text();
+        if(filterVal2==filterVal) {
+          $(this).fadeIn(0).removeClass('hidden');
+        }
+        else {
+          $(this).fadeOut(0).addClass('hidden');
+        }
+      });
+    }
   });
+
+});
+

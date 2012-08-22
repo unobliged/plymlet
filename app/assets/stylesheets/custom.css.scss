@@ -39,7 +39,7 @@ textarea {
 }
 
 .container {
-  width: 80%;
+  width: 75%;
 }
 
 .container h1, h2, h3 {
@@ -138,14 +138,14 @@ footer {
 
 #leftcol {
 	float:left;
-	width:55%;
+	width:60%;
 	margin:0;
 	padding:0;
 }
 
 #rightcol {
 	float:left;
-	width:45%;
+	width:40%;
 	margin:0;
 	padding:0;
 }
@@ -232,6 +232,7 @@ li:hover {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	margin:0px;
 	padding:15px;
+	word-wrap: break-word;
 }
 
 /* Begin classes for Footer */
@@ -244,4 +245,8 @@ li:hover {
 
 .boldme {
 	font-weight:bold;
+}
+
+.passage-word a:hover{
+	text-decoration: underline;
 }

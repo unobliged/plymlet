@@ -4,6 +4,11 @@ module PassagesHelper
     @words = content.downcase.gsub(/[[:punct:]]/,"").split(' ').uniq
   end
 
+  def all_words(content)
+   # @words = content.downcase.gsub(/[[:punct:]]/,"").split(' ')
+    @words = content.downcase.gsub(/[[:punct:]]/){|p| " " + p + " " }.split(' ')
+  end
+
 # this method is only for looking up in CEDICT, Redis should be used later after rake
   def define_word_CEDICT(word)
     @cedict = 'cedict.txt'
