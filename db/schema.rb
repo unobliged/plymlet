@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120615215704) do
+ActiveRecord::Schema.define(:version => 20120830221109) do
 
   create_table "passages", :force => true do |t|
     t.integer  "passage_id"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20120615215704) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.text     "vocab_list"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

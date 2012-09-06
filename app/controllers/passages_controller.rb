@@ -70,4 +70,17 @@ class PassagesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def add_to_vocab_list
+    current_user.vocab_list[params[:vocab_word]] = params[:vocab_def]
+    current_user.save
+    redirect_to :back, :notice => "Word successfully saved."
+  end
+
+  def remove_from_vocab_list
+    current_user.vocab_list.delete params[:vocab_word]
+    current_user.save
+    redirect_to :back, :notice => "Word removed."
+  end
+
 end

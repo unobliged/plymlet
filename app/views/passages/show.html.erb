@@ -23,13 +23,22 @@
 
 <div id="rightcol">
   <div class="author-notes">
+
   </div>
-  <p><a href="#"><span class="passage-word">Vocabulary List</span></a></p>
+
+  <div class="inline"><span class="passage-word"><p class="btn btn-primary">Show All Words</p></span></div>
+  <div class="inline"><span class="passage-word"><p class="btn btn-primary">Hide My Words</p></span></div>
+
   <div id="vocab-box">
     <ul class="vocab-list"><% unique_words(@passage.content).each do |x| %>
       <% begin %>
         <li class="vocab-item">
           <p class="vocab-word"><%= x %></p>
+            <% if current_user.vocab_list.has_key?(x) %>
+              <%= button_to "Remove from My Words", remove_from_vocab_list_passages_path(:vocab_word => x), :class => "btn btn-warning" %>
+            <% else %>
+              <%= button_to "Add to My Words", add_to_vocab_list_passages_path(:vocab_word => x, :vocab_def => define_word(x)), :class => "btn btn-primary" %>
+            <% end %>
           <p class="vocab-def"><%= define_word(x) %></p>
         </li>
           <% rescue Errno::ENOENT %>

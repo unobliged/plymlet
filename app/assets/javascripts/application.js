@@ -20,21 +20,27 @@ $(document).ready(function() {
 
   $("span.passage-word").click(function() {
     var filterVal = $(this).text();
-    if(filterVal == "Vocabulary List") {
+    if(filterVal == "Show All Words") {
       $("li.hidden").fadeIn(0).removeClass('hidden');
-    }
-    else {
-      $("li.vocab-item").each(function() {
-        var filterVal2 = $(this).children("p.vocab-word").text();
-        if(filterVal2==filterVal) {
-          $(this).fadeIn(0).removeClass('hidden');
-        }
-        else {
-          $(this).fadeOut(0).addClass('hidden');
-        }
-      });
-    }
+    } else {
+        if(filterVal == "Hide My Words") {
+          $("li.vocab-item").each(function() {
+            var filterVal3 = $(this).find(".btn").attr("value");
+            if(filterVal3=="Remove from My Words") {
+              $(this).fadeOut(0).addClass('hidden');
+            }
+          });
+        } else {
+            $("li.vocab-item").each(function() {
+              var filterVal2 = $(this).children("p.vocab-word").text();
+              if(filterVal2==filterVal) {
+                $(this).fadeIn(0).removeClass('hidden');
+              } else {
+                $(this).fadeOut(0).addClass('hidden');
+                }
+            });
+          }
+      }
   });
-
 });
 
