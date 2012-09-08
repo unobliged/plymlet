@@ -24,12 +24,7 @@ $(document).ready(function() {
       $("li.hidden").fadeIn(0).removeClass('hidden');
     } else {
         if(filterVal == "Hide My Words") {
-          $("li.vocab-item").each(function() {
-            var filterVal3 = $(this).find(".btn").attr("value");
-            if(filterVal3=="Remove from My Words") {
-              $(this).fadeOut(0).addClass('hidden');
-            }
-          });
+          $(".btn-warning").closest("li.vocab-item").fadeOut(0).addClass('hidden');
         } else {
             $("li.vocab-item").each(function() {
               var filterVal2 = $(this).children("p.vocab-word").text();

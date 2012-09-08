@@ -1,19 +1,43 @@
-<% provide(:title, "My Profile") %>
-<div class="row">
-  <aside class="span4">
-    <section>
-      <h1>
-        <%= gravatar_for @user %>
-      </h1>
-    </section>
-  </aside>
+<%= provide(:title, "Profile") %>
+<% content_for :for_head do %>
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<div id="leftcol" style="width:10%">
+  <%= gravatar_for @user %>
+  <h3><%= @user.username %></h3>
+</div>
+<div id="ctrcol">
   <div class="ul-container">
     <ul>
+      <h2>Account Details</h2>
+      <li>Username: <%= @user.username %></li>
       <li>Email: <%= @user.email %></li>
       <% if @user == current_user %>
-        <li><%= link_to "Edit User Information", edit_user_registration_path %></li>
+        <%= link_to "Edit User Information", edit_user_registration_path %>
       <% end %>
-      <p>Vocabulary List: <%= @user.vocab_list %></p>
+    </ul>
+  </div>
+</div>
+
+<div id="rightcol">
+  <p>My Words</p>
+  <div id="vocab-box">
+    <ul class="vocab-list"><% @user.vocab_list.each do |key,value| %>
+      <% begin %>
+        <li class="vocab-item">
+          <p class="vocab-word"><%= key %></p>
+            <% if @user == current_user %>
+              <%= button_to "Remove from My Words", remove_from_vocab_list_passages_path(:vocab_word => key), :class => "btn btn-warning", :confirm => "Are you sure?" %>
+            <% end %>
+          <p class="vocab-def"><%= value %></p>
+        </li>
+      <% end %>
+      <% end %>
     </ul>
   </div>
 </div>
