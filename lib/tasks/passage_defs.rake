@@ -1,21 +1,14 @@
 task :passage_defs => :environment do
 
-# Initial rake task will only do Passage #4 to keep testing simple
-# Passage #4 is the only Chinese passage and we are testing CEDICT lookup
+#  Use this to save words and defs to each Passahe.vocab_list
 
-  require "#{Rails.root}/app/helpers/passages_helper"
-  include PassagesHelper
+require "#{Rails.root}/app/helpers/passages_helper"
+include PassagesHelper
 
-  p = Passage.find_by_title('test cn passage').content
-  unique_words(p).each do |x|
-    define_word_CEDICT(x).each do |y|
-      REDIS.rpush(x, y)
+  Passage.all each do |passage|
+    unique_words(passage.content).each do |word|
+      passage.vocab_list[word] = define_word_CEDICT(word) 
     end
+    passage.save
   end
-
-#  Use this format to iterate over all Passages for later
-#  Passage.all.each do |x|
-#    puts x.title
-#  end
-
 end

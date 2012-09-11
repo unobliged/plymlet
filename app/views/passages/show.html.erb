@@ -32,21 +32,17 @@
   <div class="inline"><span class="passage-word"><p class="btn btn-primary">Hide My Words</p></span></div>
 
   <div id="vocab-box">
-    <ul class="vocab-list"><% unique_words(@passage.content).each do |x| %>
-      <% begin %>
+    <ul class="vocab-list"><% @passage.vocab_list.each do |key, value| %>
         <li class="vocab-item">
-          <p class="vocab-word"><%= x %></p>
-            <% if current_user.vocab_list.has_key?(x) %>
-              <%= button_to "Remove from My Words", remove_from_vocab_list_passages_path(:vocab_word => x), :class => "btn btn-warning" %>
+          <p class="vocab-word"><%= key %></p>
+            <% if current_user.vocab_list.has_key?(key) %>
+              <%= button_to "Remove from My Words", remove_from_vocab_list_passages_path(:vocab_word => key), :class => "btn btn-warning" %>
             <% else %>
-              <%= button_to "Add to My Words", add_to_vocab_list_passages_path(:vocab_word => x, :vocab_def => define_word(x)), :class => "btn btn-primary" %>
+              <%= button_to "Add to My Words", add_to_vocab_list_passages_path(:vocab_word => key, :vocab_def => value), :class => "btn btn-primary" %>
             <% end %>
-          <p class="vocab-def"><%= define_word(x) %></p>
+          <p class="vocab-def"><%= value %></p>
         </li>
-          <% rescue Errno::ENOENT %>
-            <%= "error:ENOENT" %>
-          <% end %>
-      <% end %>
+    <% end %>
     </ul>
   </div>
 </div>

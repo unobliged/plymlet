@@ -14,5 +14,6 @@
 
 class Passage < ActiveRecord::Base
   attr_accessible :author, :content, :language, :title
+  serialize :vocab_list, Hash
 
 end
