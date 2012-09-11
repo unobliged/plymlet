@@ -5,7 +5,7 @@ task :passage_defs => :environment do
 require "#{Rails.root}/app/helpers/passages_helper"
 include PassagesHelper
 
-  Passage.all each do |passage|
+  Passage.all.each do |passage|
     unique_words(passage.content).each do |word|
       passage.vocab_list[word] = define_word_CEDICT(word) 
     end
