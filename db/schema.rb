@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120920015244) do
+ActiveRecord::Schema.define(:version => 20120920033115) do
 
   create_table "passages", :force => true do |t|
     t.integer  "passage_id"
@@ -21,10 +21,11 @@ ActiveRecord::Schema.define(:version => 20120920015244) do
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.text     "vocab_list"
+    t.hstore   "vocab_list"
   end
 
   add_index "passages", ["author", "language", "title"], :name => "index_passages_on_author_and_language_and_title", :unique => true
+  add_index "passages", ["vocab_list"], :name => "index_on_passages_gin_vocab_list"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

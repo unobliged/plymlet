@@ -14,6 +14,13 @@
 
 class Passage < ActiveRecord::Base
   attr_accessible :author, :content, :language, :title
-  serialize :vocab_list, Hash
+
+  serialize :vocab_list, ActiveRecord::Coders::Hstore
+
+  after_initialize :add_empty_hash
+
+  def add_empty_hash
+    self.vocab_list ||= {}
+  end
 
 end
