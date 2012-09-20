@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/softa/activerecord-postgres-hstore.git
+  revision: 6f3084a0257e380d86466e71f07ebf81f2bab7c4
+  specs:
+    activerecord-postgres-hstore (0.4.1)
+      pg
+      rails
+      rake
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -162,6 +171,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-postgres-hstore!
   annotate (~> 2.4.1.beta)
   bcrypt-ruby (~> 3.0.1)
   bootstrap-sass (= 2.0.0)

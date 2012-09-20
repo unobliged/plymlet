@@ -14,7 +14,6 @@ module PassagesHelper
     @cedict = 'cedict.txt'
     @word_matches = File.readlines(@cedict).grep(/#{word}/)
 
-    # Could not use << operator without initializing @best_match, workaround?
     @best_match = []
 
     @word_matches.each do |x|
@@ -28,6 +27,24 @@ module PassagesHelper
     end
 
     return @best_match
+  end
+
+# this method is only for looking up in EDICT, Redis should be used later after rake
+  def define_word_EDICT(word)
+    @edict = 'edict2utf8'
+    @word_matches = File.readlines(@edict).grep(/#{word}/)
+
+     @best_match = []
+ 
+     @word_matches.each do |x|
+       @match = x.split(/[ ()\[\];]/)
+ 
+       if @match[0] == word || @match[1] == word || @match[2] == word || @match[3] == word
+         @best_match << x
+       end
+     end
+ 
+     return @best_match
   end
 
 # rake passage_defs for this to work

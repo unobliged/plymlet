@@ -8,7 +8,15 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username
   # attr_accessible :title, :body
+  validates_presence_of :username
+  validates_uniqueness_of :username
 
-  serialize :vocab_list, Hash
+  serialize :vocab_list, ActiveRecord::Coders::Hstore
+
+  after_initialize :add_empty_hash
+
+  def add_empty_hash
+    self.vocab_list ||= {}
+  end
 
 end

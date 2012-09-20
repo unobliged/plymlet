@@ -15,7 +15,7 @@
 /tmp
 
 # Ignore the database.yml for security reasons
-#/config/database.yml
+/config/database.yml
 
 # Ignore other unneeded files.
 doc/
